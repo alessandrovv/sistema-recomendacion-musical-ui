@@ -1,0 +1,125 @@
+<ion-header collapse="fade" [translucent]="true">
+  <ion-toolbar color="dark">
+    <ion-title color="light">
+      Home
+    </ion-title>
+    <ion-buttons slot="primary">
+      <ion-button color="secondary" routerLink="/settings">
+        <ion-icon slot="icon-only" name="cog"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Home</ion-title>
+    </ion-toolbar>
+    <ion-toolbar>
+      <ion-searchbar showCancelButton="focus" placeholder="Company, category, expense ..."></ion-searchbar>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="ion-padding">
+
+    <ion-list-header>
+      <ion-label color="tertiary">Artistas Recomendados</ion-label>
+    </ion-list-header>
+
+    <!-- Skeletons -->
+    <ion-list class="item-card-list animate__animated animate__fadeIn" *ngIf="!content_loaded">
+      <ion-item lines="none" color="primary" *ngFor="let i of [].constructor(3);">
+        <ion-avatar slot="start">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-avatar>
+        <ion-label>
+          <h3><ion-skeleton-text animated style="width: 50%"></ion-skeleton-text></h3>
+          <p><ion-skeleton-text animated style="width: 30%"></ion-skeleton-text></p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+    <ion-list class="item-card-list animate__animated animate__fadeIn" *ngIf="content_loaded" lines="none">
+      <ion-item color="primary" button detail>
+        <ion-label color="medium">
+          <h3>Ok Boomer</h3>
+          <small>Emo</small>
+        </ion-label>
+      </ion-item>
+
+      <ion-item color="primary" button detail>
+        <ion-label color="medium">
+          <h3>Fiesta Bizarra</h3>
+          <small>Scream</small>
+        </ion-label>
+      </ion-item>
+
+      <ion-item color="primary" button detail>
+        <ion-label color="medium">
+          <h3>16-bits</h3>
+          <small>Indie</small>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+    <hr>
+
+    <ion-list-header>
+      <ion-label color="tertiary">Volver a escuchar</ion-label>
+      <ion-button color="medium" *ngIf="content_loaded">See All <ion-icon slot="end" name="arrow-forward"></ion-icon>
+      </ion-button>
+    </ion-list-header>
+
+    <!-- Skeletons -->
+    <ion-list class="list-custom animate__animated animate__fadeIn" lines="full" *ngIf="!content_loaded">
+      <ion-item color="primary" *ngFor="let i of [].constructor(3);">
+        <ion-label color="medium">
+          <h3><ion-skeleton-text animated style="width: 50%"></ion-skeleton-text></h3>
+          <p><ion-skeleton-text animated style="width: 70%"></ion-skeleton-text></p>
+        </ion-label>
+        <ion-skeleton-text slot="end" animated style="width: 10%"></ion-skeleton-text>
+      </ion-item>
+    </ion-list>
+
+    <ion-list class="list-custom animate__animated animate__fadeIn" lines="full" *ngIf="content_loaded">
+      <ion-item color="primary" button detail="false">
+        <ion-avatar slot="start" class="ion-avatar-default-icon">
+          <ion-icon color="tertiary" size="large" name="caret-forward-outline"></ion-icon>
+        </ion-avatar>
+
+        <ion-label>
+          <h3>Model Buses</h3>
+          <p>Lovejoy</p>
+        </ion-label>
+        <ion-badge color="secondary" slot="end">2:51</ion-badge>
+      </ion-item>
+
+      <ion-item color="primary" button detail="false">
+        <ion-avatar slot="start" class="ion-avatar-default-icon">
+          <ion-icon color="tertiary" size="large" name="caret-forward-outline"></ion-icon>
+        </ion-avatar>
+
+        <ion-label>
+          <h3>The Fall</h3>
+          <p>Lovejoy</p>
+        </ion-label>
+        <ion-badge color="secondary" slot="end">3:05</ion-badge>
+      </ion-item>
+
+      <ion-item color="primary" button detail="false">
+        <ion-avatar slot="start" class="ion-avatar-default-icon">
+          <ion-icon color="tertiary" size="large" name="caret-forward-outline"></ion-icon>
+        </ion-avatar>
+
+        <ion-label>
+          <h3>Concrete</h3>
+          <p>Lovejoy</p>
+        </ion-label>
+        <ion-badge color="secondary" slot="end">3:17</ion-badge>
+      </ion-item>
+    </ion-list>
+
+  </div>
+
+</ion-content>
