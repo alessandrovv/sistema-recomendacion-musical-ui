@@ -6,7 +6,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'welcome', // TODO: Set this to ''
+    redirectTo: 'signin', // TODO: Set this to ''
     pathMatch: 'full'
   },
   {
