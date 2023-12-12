@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import axios from 'axios';
 
 @Injectable({
   providedIn: 'root'
@@ -19,9 +20,9 @@ export class AuthService {
     // ...
 
     // Sample only - remove this after real authentication / session
-    let session = {
-      email: 'john.doe@mail.com'
-    }
+    const session = {
+      email: 'john.doe@mail.com',
+    };
 
     return false;
     // return session;
@@ -30,23 +31,19 @@ export class AuthService {
   // Sign in
   async signIn(email: string, password: string) {
     // Sample only - remove this after real authentication / session
-    let sample_user = {
-      email: email,
-      password: password
-    }
 
-    return sample_user;
+    const response = await axios.post('localhost:8080/auth/login',{email, password});
+
+    return response;
   }
 
   // Sign up
   async signUp(email: string, password: string) {
     // Sample only - remove this after real authentication / session
-    let sample_user = {
-      email: email,
-      password: password
-    }
 
-    return sample_user;
+    // const response = await axios.post('localhost:8080/auth/login',{email, password});
+
+    return null;
   }
 
   // Sign out

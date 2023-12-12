@@ -6,7 +6,7 @@ app-welcome {
 }
 
 app-welcome ion-content {
-  --background: linear-gradient(135deg, var(--ion-color-dark), var(--ion-color-primary));
+  --background: var(--ion-background-color);
 }
 
 app-welcome .swiper-welcome {
@@ -64,5 +64,5 @@ app-welcome .swiper-pagination-bullet-active {
 }
 
 app-welcome ion-footer {
-  background: linear-gradient(135deg, var(--ion-color-dark), var(--ion-color-primary));
+  background: var(--ion-color-dark);
 }

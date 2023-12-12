@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-inferrable-types */
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit } from '@angular/core';
 import { LoadingController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth/auth.service';
@@ -44,7 +46,7 @@ export class SigninPage implements OnInit {
     this.submit_attempt = true;
 
     // If email or password empty
-    if (this.signin_form.value.email == '' || this.signin_form.value.password == '') {
+    if (this.signin_form.value.email === '' || this.signin_form.value.password === '') {
       this.toastService.presentToast('Error', 'Please input email and password', 'top', 'danger', 2000);
 
     } else {
@@ -58,7 +60,13 @@ export class SigninPage implements OnInit {
       await loading.present();
 
       // TODO: Add your sign in logic
-      // ...
+      this.authService.signIn(this.signin_form.value.email, this.signin_form.value.password).then(async (response: any)=>{
+        if(response.status){
+          await this.router.navigate(['/home']);
+        }
+      }).catch(error=>{
+        this.toastService.presentToast('Error', 'Error al inciar sescion', 'top', 'danger', 2000);
+      });
 
       // Fake timeout
       setTimeout(async () => {

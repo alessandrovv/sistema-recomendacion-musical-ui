@@ -31,13 +31,16 @@
 /* Animation */
 @import "~animate.css/animate.min.css";
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 body {
   background-color: var(--ion-color-dark);
 }
 
 ion-content {
-  --background: linear-gradient(135deg, var(--ion-color-dark), var(--ion-color-primary));
+  --background: var(--ion-background-color);
 }
 
 ion-list {
