@@ -31,10 +31,10 @@ export class AuthService {
   // Sign in
   async signIn(email: string, password: string) {
     // Sample only - remove this after real authentication / session
-
-    const response = await axios.post('localhost:8080/auth/login',{email, password});
-
-    return response;
+    console.log('sending request');
+    const response = await axios.post('http://localhost:3000/auth/login',{email, password});
+    console.log('request successfull');
+    return response.data;
   }
 
   // Sign up

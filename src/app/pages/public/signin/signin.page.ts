@@ -60,20 +60,28 @@ export class SigninPage implements OnInit {
       await loading.present();
 
       // TODO: Add your sign in logic
+      console.log('starting auth request');
       this.authService.signIn(this.signin_form.value.email, this.signin_form.value.password).then(async (response: any)=>{
+        console.log(response.status, response);
         if(response.status){
+          loading.dismiss();
           await this.router.navigate(['/home']);
+        }else{
+          loading.dismiss();
+          this.toastService.presentToast('Error', 'Error al inciar sescion', 'top', 'danger', 2000);
         }
       }).catch(error=>{
+        console.error(error);
+        loading.dismiss();
         this.toastService.presentToast('Error', 'Error al inciar sescion', 'top', 'danger', 2000);
       });
 
       // Fake timeout
-      setTimeout(async () => {
-        // Sign in success
-        await this.router.navigate(['/home']);
-        loading.dismiss();
-      }, 2000);
+      // setTimeout(async () => {
+      //   // Sign in success
+      //   await this.router.navigate(['/home']);
+      //   loading.dismiss();
+      // }, 2000);
 
     }
   }
