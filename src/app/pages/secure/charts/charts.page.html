@@ -1,7 +1,7 @@
 <ion-header collapse="fade" [translucent]="true">
   <ion-toolbar color="dark">
     <ion-title color="light">
-      Charts
+      Descubrir
     </ion-title>
     <ion-buttons slot="primary">
       <ion-button color="secondary" routerLink="/settings">
@@ -14,120 +14,110 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Insights</ion-title>
+      <ion-title size="large">Descubrir</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <div class="ion-padding">
-    <ion-card color="primary" class="ion-no-margin ion-card-chart animate__animated animate__fadeIn">
-      <!-- Skeletons -->
-      <ng-container *ngIf="!content_loaded">
-        <ion-card-header>
-          <div>
-            <ion-card-title>
-              <ion-skeleton-text animated style="width: 60px"></ion-skeleton-text>
-            </ion-card-title>
-            <ion-card-subtitle>
-              <ion-skeleton-text animated style="width: 80px"></ion-skeleton-text>
-            </ion-card-subtitle>
+    <div class="w-full bg-white text-gray-600 text-xl p-1 rounded-sm flex focus:ring-1 focus:ring-indigo-700">
+      <input class="bg-white py-1 px-2 grow outline-none" type="text" placeholder="Buscar...">
+    </div>
+
+    <div class="mb-3">
+      <h3 class="font-bold text-lg py-2">Explora tus generos</h3>
+      <div class="flex gap-2 overflow-auto">
+        <div class="w-32 shrink-0 bg-gray-950 h-52 rounded-md grid items-end">
+          <label class="text-white font-semibold pb-3 pl-2" for="">#category</label>
+        </div>
+        <div class="w-32 shrink-0 bg-gray-950 h-52 rounded-md grid items-end">
+          <label class="text-white font-semibold pb-3 pl-2" for="">#category</label>
+        </div>
+        <div class="w-32 shrink-0 bg-gray-950 h-52 rounded-md grid items-end">
+          <label class="text-white font-semibold pb-3 pl-2" for="">#category</label>
+        </div>
+        <div class="w-32 shrink-0 bg-gray-950 h-52 rounded-md grid items-end">
+          <label class="text-white font-semibold pb-3 pl-2" for="">#category</label>
+        </div>
+        <div class="w-32 shrink-0 bg-gray-950 h-52 rounded-md grid items-end">
+          <label class="text-white font-semibold pb-3 pl-2" for="">#category</label>
+        </div>
+        <div class="w-32 shrink-0 bg-gray-950 h-52 rounded-md grid items-end">
+          <label class="text-white font-semibold pb-3 pl-2" for="">#category</label>
+        </div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <h3 class="font-bold text-lg py-2">Explorar Todo</h3>
+      <div class="grid grid-cols-2 gap-2">
+        <div class="shrink-0 bg-green-800 h-24 rounded-md grid items-end">
+          <h3 class="text-white font-semibold pb-3 pl-2" for="">Listas de reproduccion</h3>
+        </div>
+        <div class="shrink-0 bg-violet-700 h-24 rounded-md grid items-end">
+          <h3 class="text-white font-semibold pb-3 pl-2" for="">Albums</h3>
+        </div>
+        <div class="shrink-0 bg-cyan-800 h-24 rounded-md grid items-end">
+          <h3 class="text-white font-semibold pb-3 pl-2" for="">Artistas</h3>
+        </div>
+        <div class="shrink-0 bg-yellow-700 h-24 rounded-md grid items-end">
+          <h3 class="text-white font-semibold pb-3 pl-2" for="">Canciones</h3>
+        </div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <h3 class="font-bold text-lg pt-2">TOP 5 semanal</h3>
+      <div class="flex flex-col gap-2 divide-y divide-gray-600">
+        <div class="w-full flex h-20 gap-2 pt-2">
+          <div class="h-full grow-0 aspect-square bg-zinc-950 rounded-md grid place-items-center">
+            <ion-icon color="tertiary" size="large" name="caret-forward-outline"></ion-icon>
           </div>
-          <ion-badge color="primary" mode="ios">
-            <ion-skeleton-text animated style="width: 50px"></ion-skeleton-text>
-          </ion-badge>
-        </ion-card-header>
-
-        <ion-skeleton-text animated style="width: calc(100% - 40px); margin: 16px auto 16px auto; min-height: 140px;">
-        </ion-skeleton-text>
-      </ng-container>
-
-      <!-- Chart -->
-      <ng-container *ngIf="content_loaded">
-        <ion-card-header>
-          <div>
-            <ion-card-title>$481.00</ion-card-title>
-            <ion-card-subtitle class="ion-margin-bottom">
-              <ion-text color="tertiary">Spent in total this year</ion-text>
-            </ion-card-subtitle>
+          <label class="flex-grow py-1">
+            <h3 class="text-md font-bold">Cancion TOP</h3>
+            <p class="text-sm text-zinc-500">Fulanito</p>
+          </label>
+          <small class="flex-shrink bg-slate-500 rounded-md py px-1 self-center font-semibold" color="secondary" slot="end">2:33</small>
+        </div>
+        <div class="w-full flex h-20 gap-2 pt-2">
+          <div class="h-full grow-0 aspect-square bg-zinc-950 rounded-md grid place-items-center">
+            <ion-icon color="tertiary" size="large" name="caret-forward-outline"></ion-icon>
           </div>
-          <ion-badge color="secondary">
-            <ion-icon name="caret-up"></ion-icon>21.16%
-          </ion-badge>
-        </ion-card-header>
-
-        <canvas baseChart [data]="bar_chart_data" [options]="bar_chart_option" [type]="bar_chart_type"
-          class="ion-padding">
-        </canvas>
-      </ng-container>
-    </ion-card>
-
-    <hr class="hr-medium">
-
-    <ion-card color="primary" class="ion-no-margin ion-card-chart animate__animated animate__fadeIn">
-      <!-- Skeletons -->
-      <ng-container *ngIf="!content_loaded">
-        <ion-card-header>
-          <div>
-            <ion-card-title>
-              <ion-skeleton-text animated style="width: 60px"></ion-skeleton-text>
-            </ion-card-title>
-            <ion-card-subtitle>
-              <ion-skeleton-text animated style="width: 80px"></ion-skeleton-text>
-            </ion-card-subtitle>
+          <label class="flex-grow py-1">
+            <h3 class="text-md font-bold">Cancion TOP</h3>
+            <p class="text-sm text-zinc-500">Fulanito</p>
+          </label>
+          <small class="flex-shrink bg-slate-500 rounded-md py px-1 self-center font-semibold" color="secondary" slot="end">2:33</small>
+        </div>
+        <div class="w-full flex h-20 gap-2 pt-2">
+          <div class="h-full grow-0 aspect-square bg-zinc-950 rounded-md grid place-items-center">
+            <ion-icon color="tertiary" size="large" name="caret-forward-outline"></ion-icon>
           </div>
-          <ion-badge color="primary" mode="ios">
-            <ion-skeleton-text animated style="width: 50px"></ion-skeleton-text>
-          </ion-badge>
-        </ion-card-header>
-
-        <ion-skeleton-text animated style="width: calc(100% - 40px); margin: 16px auto 16px auto; min-height: 140px;">
-        </ion-skeleton-text>
-      </ng-container>
-
-      <!-- Chart -->
-      <ng-container *ngIf="content_loaded">
-        <canvas
-          class="ion-padding"
-          baseChart
-          [data]="barChartData"
-          [options]="barChartOptions"
-          [type]="barChartType"
-        >
-        </canvas>
-      </ng-container>
-    </ion-card>
-
-    <hr class="hr-medium">
-
-    <ion-card color="primary" class="ion-no-margin ion-card-chart animate__animated animate__fadeIn">
-      <!-- Skeletons -->
-      <ng-container *ngIf="!content_loaded">
-        <ion-card-header>
-          <div>
-            <ion-card-title>
-              <ion-skeleton-text animated style="width: 60px"></ion-skeleton-text>
-            </ion-card-title>
-            <ion-card-subtitle>
-              <ion-skeleton-text animated style="width: 80px"></ion-skeleton-text>
-            </ion-card-subtitle>
+          <label class="flex-grow py-1">
+            <h3 class="text-md font-bold">Cancion TOP</h3>
+            <p class="text-sm text-zinc-500">Fulanito</p>
+          </label>
+          <small class="flex-shrink bg-slate-500 rounded-md py px-1 self-center font-semibold" color="secondary" slot="end">2:33</small>
+        </div>
+        <div class="w-full flex h-20 gap-2 pt-2">
+          <div class="h-full grow-0 aspect-square bg-zinc-950 rounded-md grid place-items-center">
+            <ion-icon color="tertiary" size="large" name="caret-forward-outline"></ion-icon>
           </div>
-          <ion-badge color="primary" mode="ios">
-            <ion-skeleton-text animated style="width: 50px"></ion-skeleton-text>
-          </ion-badge>
-        </ion-card-header>
-
-        <ion-skeleton-text animated style="width: calc(100% - 40px); margin: 16px auto 16px auto; min-height: 140px;">
-        </ion-skeleton-text>
-      </ng-container>
-
-      <!-- Chart -->
-      <ng-container *ngIf="content_loaded">
-        <canvas baseChart class="chart"
-        [data]="polarAreaChartData"
-        [legend]="polarAreaLegend"
-        [type]="polarAreaChartType">
-        </canvas>
-      </ng-container>
-    </ion-card>
+          <label class="flex-grow py-1">
+            <h3 class="text-md font-bold">Cancion TOP</h3>
+            <p class="text-sm text-zinc-500">Fulanito</p>
+          </label>
+          <small class="flex-shrink bg-slate-500 rounded-md py px-1 self-center font-semibold" color="secondary" slot="end">2:33</small>
+        </div>
+        <div class="w-full flex h-20 gap-2 pt-2">
+          <div class="h-full grow-0 aspect-square bg-zinc-950 rounded-md grid place-items-center">
+            <ion-icon color="tertiary" size="large" name="caret-forward-outline"></ion-icon>
+          </div>
+          <label class="flex-grow py-1">
+            <h3 class="text-md font-bold">Cancion TOP</h3>
+            <p class="text-sm text-zinc-500">Fulanito</p>
+          </label>
+          <small class="flex-shrink bg-slate-500 rounded-md py px-1 self-center font-semibold" color="secondary" slot="end">2:33</small>
+        </div>
+      </div>
+    </div>
 
   </div>
 

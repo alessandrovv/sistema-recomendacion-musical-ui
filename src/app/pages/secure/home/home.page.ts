@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/services/data/data.service';
 
 @Component({
   selector: 'app-home',
@@ -38,15 +39,39 @@ export class HomePage implements OnInit {
     artist: 'fulano',
   }];
 
-  constructor() { }
+  constructor(private dataService: DataService) { }
 
+  formatDuration(time: number): string{
+    const minutes:number = Math.ceil(time/60);
+    const seconds:number = (time%60);
+    return `${minutes}:${(seconds<10)?'0':''}${seconds}`;
+  }
 
-  ngOnInit() {
-
+  async ngOnInit() {
+    setTimeout(()=>{
+      this.getSongs().catch(error=>console.error(error));;
+    },0);
+    setTimeout(()=>{
+      this.getAlbums().catch(error=>console.error(error));
+    },0);
+    // await this.getAlbums();
     // Fake timeout
     setTimeout(() => {
       this.content_loaded = true;
     }, 2000);
+  }
+
+  async getAlbums(){
+    await this.dataService.getAllAlbums().then((response: any[]) =>{
+      this.recomendations = response;
+    }).catch(error=>console.error(error));;
+  }
+
+  async getSongs(){
+    await this.dataService.getAllSongs().then((response: any[])=>{
+      this.lastSongs = response.splice(0,4);
+      console.log(this.lastSongs);
+    }).catch(error=>console.error(error));;
   }
 
 }

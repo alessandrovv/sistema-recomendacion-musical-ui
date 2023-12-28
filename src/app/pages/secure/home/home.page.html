@@ -23,15 +23,15 @@
 
   <div class="ion-padding">
     <div>
-      <h4 class="py-2 text-lg">Artistas Recomendados</h4>
+      <h4 class="py-2 text-lg">Albumes Recomendados</h4>
       <div class="rounded-lg divide-zinc-700 divide-y-2 p-2 bg-zinc-800" *ngIf="content_loaded">
         <div class="w-full flex py-2 h-20 px-3" *ngFor="let recomendation of recomendations">
           <div class="w-1/5">
 
           </div>
           <div class="w-4/5">
-            <h3 class="font-bold">{{recomendation.artist}}</h3>
-            <small class="text-sm text-zinc-500">{{recomendation.song}}</small>
+            <h3 class="font-bold">{{recomendation.name}}</h3>
+            <small class="text-sm text-zinc-500">{{recomendation.artist.nombre}}</small>
           </div>
         </div>
       </div>
@@ -56,7 +56,7 @@
         <ion-button color="medium" *ngIf="content_loaded">See All <ion-icon slot="end" name="arrow-forward"></ion-icon>
         </ion-button>
       </div>
-      <div class="rounded-lg divide-zinc-700 divide-y-2 px-3 bg-zinc-800"  *ngIf="content_loaded">
+      <div class="rounded-lg divide-zinc-700 divide-y-2 px-3 bg-zinc-800 mb-3"  *ngIf="content_loaded">
         <div class="w-full flex py-2 h-20 gap-2" *ngFor="let song of lastSongs">
 
           <div class="h-full grow-0 aspect-square bg-zinc-950 rounded-md grid place-items-center">
@@ -64,10 +64,12 @@
           </div>
 
           <label class="flex-grow py-1">
-            <h3 class="text-md font-bold">{{song.song}}</h3>
-            <p class="text-sm text-zinc-500">{{song.artist}}</p>
+            <h3 class="text-md font-bold">{{song.titulo}}</h3>
+            <p class="text-sm text-zinc-500">{{song.album.artist.nombre}}</p>
           </label>
-          <small class="flex-shrink bg-slate-500 rounded-md py px-1 self-center font-semibold" color="secondary" slot="end">2:51</small>
+          <small class="flex-shrink bg-slate-500 rounded-md py px-1 self-center font-semibold" color="secondary" slot="end">{{
+            formatDuration(song.duracion)
+          }}</small>
         </div>
       </div>
     </div>

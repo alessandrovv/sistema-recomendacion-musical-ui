@@ -1,7 +1,7 @@
 <ion-header collapse="fade" [translucent]="true">
   <ion-toolbar color="dark">
     <ion-title color="light">
-      Payments
+      Tu biblioteca
     </ion-title>
     <ion-buttons slot="primary">
       <ion-button color="secondary" (click)="filter()">
@@ -12,128 +12,115 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header>
-    <ion-toolbar class="toolbar-search">
-      <ion-searchbar color="dark" showCancelButton="focus" placeholder="Company, category, expense ..."></ion-searchbar>
-    </ion-toolbar>
-  </ion-header>
 
-  <div class="ion-padding">
-    <!-- Skeletons -->
-    <ng-container *ngIf="!content_loaded">
+    <div class="rounded-sm divide-zinc-800 w-100 mt-2 p-3 gap-3 flex flex-col bg-zinc-800" *ngIf="content_loaded">
+      <div class="w-full flex gap-2">
+        <div class="w-20 aspect-square bg-white">
 
-      <ion-list-header class="ion-list-header-small">
-        <ion-label><ion-skeleton-text animated style="width: 50%"></ion-skeleton-text></ion-label>
-        <ion-note color="tertiary" class="ion-note-small">
-          <ion-skeleton-text animated style="width: 40px"></ion-skeleton-text>
-        </ion-note>
-      </ion-list-header>
+        </div>
+        <div class="grow grid content-center">
+          <h3 class="font-bold">Favoritas</h3>
+          <small class="text-sm text-zinc-500">Playlist - 960 canciones</small>
+        </div>
+      </div>
+      <div class="w-full flex gap-2">
+        <div class="w-20 aspect-square bg-white">
 
-      <ion-list class="list-custom animate__animated animate__fadeIn" lines="full">
-        <ion-item color="primary" button detail="false" *ngFor="let i of [].constructor(12);">
-          <ion-avatar slot="start" class="ion-avatar-default-icon">
-            <ion-skeleton-text animated></ion-skeleton-text>
-          </ion-avatar>
-          <ion-label>
-            <h3><ion-skeleton-text animated style="width: 50%"></ion-skeleton-text></h3>
-            <p><ion-skeleton-text animated style="width: 75%"></ion-skeleton-text></p>
-          </ion-label>
-          <ion-skeleton-text slot="end" animated style="width: 15%"></ion-skeleton-text>
-        </ion-item>
-      </ion-list>
+        </div>
+        <div class="grow grid content-center">
+          <h3 class="font-bold">Lista de prueba</h3>
+          <small class="text-sm text-zinc-500">Playlist - Alessandro Venegas</small>
+        </div>
+      </div>
+      <div class="w-full flex gap-2">
+        <div class="w-20 aspect-square bg-white">
 
-    </ng-container>
+        </div>
+        <div class="grow grid content-center">
+          <h3 class="font-bold">Lista de prueba</h3>
+          <small class="text-sm text-zinc-500">Playlist - Alessandro Venegas</small>
+        </div>
+      </div>
+      <div class="w-full flex gap-2">
+        <div class="w-20 aspect-square bg-white">
 
-    <ng-container *ngIf="content_loaded">
+        </div>
+        <div class="grow grid content-center">
+          <h3 class="font-bold">Lista de prueba</h3>
+          <small class="text-sm text-zinc-500">Playlist - Alessandro Venegas</small>
+        </div>
+      </div>
+      <div class="w-full flex gap-2">
+        <div class="w-20 aspect-square bg-white">
 
-      <ion-list-header class="ion-list-header-small">
-        <ion-label color="tertiary">February, 2023</ion-label>
-      </ion-list-header>
+        </div>
+        <div class="grow grid content-center">
+          <h3 class="font-bold">Lista de prueba</h3>
+          <small class="text-sm text-zinc-500">Playlist - Alessandro Venegas</small>
+        </div>
+      </div>
+      <div class="w-full flex gap-2">
+        <div class="w-20 aspect-square bg-white">
 
-      <ion-list class="list-custom animate__animated animate__fadeIn" lines="full" *ngIf="content_loaded">
-        <ion-item color="primary" button routerLink="detail" detail="false">
-          <ion-avatar slot="start" class="ion-avatar-default-icon">
-            <ion-icon color="tertiary" size="large" name="cafe-outline"></ion-icon>
-          </ion-avatar>
+        </div>
+        <div class="grow grid content-center">
+          <h3 class="font-bold">Lista de prueba</h3>
+          <small class="text-sm text-zinc-500">Playlist - Alessandro Venegas</small>
+        </div>
+      </div>
+      <div class="w-full flex gap-2">
+        <div class="w-20 aspect-square bg-white">
 
-          <ion-label>
-            <h3>Coffee</h3>
-            <p>Lorem Ipsum &middot; 09.04.2023</p>
-          </ion-label>
-          <ion-badge color="dark" slot="end">Detail</ion-badge>
-        </ion-item>
+        </div>
+        <div class="grow grid content-center">
+          <h3 class="font-bold">Lista de prueba</h3>
+          <small class="text-sm text-zinc-500">Playlist - Alessandro Venegas</small>
+        </div>
+      </div>
+      <div class="w-full flex gap-2">
+        <div class="w-20 aspect-square bg-white">
 
-        <ion-item color="primary" button routerLink="detail" detail="false">
-          <ion-avatar slot="start" class="ion-avatar-default-icon">
-            <ion-icon color="tertiary" size="large" name="cash-outline"></ion-icon>
-          </ion-avatar>
+        </div>
+        <div class="grow grid content-center">
+          <h3 class="font-bold">Lista de prueba</h3>
+          <small class="text-sm text-zinc-500">Playlist - Alessandro Venegas</small>
+        </div>
+      </div>
+      <div class="w-full flex gap-2">
+        <div class="w-20 aspect-square bg-white">
 
-          <ion-label>
-            <h3>Salary</h3>
-            <p>Lorem Ipsum Inc. &middot; 06.03.2023</p>
-          </ion-label>
-          <ion-badge color="dark" slot="end">Detail</ion-badge>
-        </ion-item>
+        </div>
+        <div class="grow grid content-center">
+          <h3 class="font-bold">Lista de prueba</h3>
+          <small class="text-sm text-zinc-500">Playlist - Alessandro Venegas</small>
+        </div>
+      </div>
+      <div class="w-full flex gap-2">
+        <div class="w-20 aspect-square bg-white">
 
-        <ion-item color="primary" button routerLink="detail" detail="false">
-          <ion-avatar slot="start" class="ion-avatar-default-icon">
-            <ion-icon color="tertiary" size="large" name="home-outline"></ion-icon>
-          </ion-avatar>
+        </div>
+        <div class="grow grid content-center">
+          <h3 class="font-bold">Lista de prueba</h3>
+          <small class="text-sm text-zinc-500">Playlist - Alessandro Venegas</small>
+        </div>
+      </div>
+      <div class="w-full flex gap-2">
+        <div class="w-20 aspect-square bg-white">
 
-          <ion-label>
-            <h3>Rent</h3>
-            <p>Lorem Inc. &middot; 03.02.2023</p>
-          </ion-label>
-          <ion-badge color="dark" slot="end">Detail</ion-badge>
-        </ion-item>
-      </ion-list>
+        </div>
+        <div class="grow grid content-center">
+          <h3 class="font-bold">Lista de prueba</h3>
+          <small class="text-sm text-zinc-500">Playlist - Alessandro Venegas</small>
+        </div>
+      </div>
+      <div class="w-full flex gap-2">
+        <div class="w-20 aspect-square bg-white">
 
-      <hr class="hr-medium">
-
-      <ion-list-header class="ion-list-header-small">
-        <ion-label color="tertiary">January, 2023</ion-label>
-      </ion-list-header>
-
-      <ion-list class="list-custom animate__animated animate__fadeIn" lines="full" *ngIf="content_loaded">
-        <ion-item color="primary" button routerLink="detail" detail="false">
-          <ion-avatar slot="start" class="ion-avatar-default-icon">
-            <ion-icon color="tertiary" size="large" name="cafe-outline"></ion-icon>
-          </ion-avatar>
-
-          <ion-label>
-            <h3>Coffee</h3>
-            <p>Lorem Ipsum &middot; 09.04.2023</p>
-          </ion-label>
-          <ion-badge color="dark" slot="end">Detail</ion-badge>
-        </ion-item>
-
-        <ion-item color="primary" button routerLink="detail" detail="false">
-          <ion-avatar slot="start" class="ion-avatar-default-icon">
-            <ion-icon color="tertiary" size="large" name="cash-outline"></ion-icon>
-          </ion-avatar>
-
-          <ion-label>
-            <h3>Salary</h3>
-            <p>Lorem Ipsum Inc. &middot; 06.03.2023</p>
-          </ion-label>
-          <ion-badge color="dark" slot="end">Detail</ion-badge>
-        </ion-item>
-
-        <ion-item color="primary" button routerLink="detail" detail="false">
-          <ion-avatar slot="start" class="ion-avatar-default-icon">
-            <ion-icon color="tertiary" size="large" name="home-outline"></ion-icon>
-          </ion-avatar>
-
-          <ion-label>
-            <h3>Rent</h3>
-            <p>Lorem Inc. &middot; 03.02.2023</p>
-          </ion-label>
-          <ion-badge color="dark" slot="end">Detail</ion-badge>
-        </ion-item>
-      </ion-list>
-
-    </ng-container>
-
-  </div>
-
+        </div>
+        <div class="grow grid content-center">
+          <h3 class="font-bold">Lista de prueba</h3>
+          <small class="text-sm text-zinc-500">Playlist - Alessandro Venegas</small>
+        </div>
+      </div>
+    </div>
 </ion-content>
