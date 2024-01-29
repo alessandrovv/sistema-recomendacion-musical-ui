@@ -11,7 +11,7 @@ export class DataService {
 
   async getAllAlbums(){
     let albums = [];
-    await axios.get('http://localhost:3000/albums').then((response: any)=>{
+    await axios.get('http://localhost:5000/albums').then((response: any)=>{
       albums=response.data?.data;
     }).catch((error)=>{
       console.error('error on getallAlbums: ', error);
@@ -20,7 +20,7 @@ export class DataService {
   }
   async getAllSongs(){
     let songs = [];
-    await axios.get('http://localhost:3000/songs').then((response: any)=>{
+    await axios.get('http://localhost:5000/songs').then((response: any)=>{
       console.log('songs response: ', response);
        songs=response.data.data;
     }).catch((error)=>{
