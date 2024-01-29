@@ -65,10 +65,12 @@
 
           <label class="flex-grow py-1">
             <h3 class="text-md font-bold">{{song.titulo}}</h3>
-            <p class="text-sm text-zinc-500">{{song.album?.artist?.nombre||'album.artist'}}</p>
+            <p class="text-sm text-zinc-500">
+              <span *ngFor="let artista of song.ArtistaCancion">{{artista.artista.nombre}}</span>
+            </p>
           </label>
           <small class="flex-shrink bg-slate-500 rounded-md py px-1 self-center font-semibold" color="secondary" slot="end">{{
-            formatDuration(song.duracion)
+            formatDuration(song.duration)
           }}</small>
         </div>
       </div>

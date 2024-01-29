@@ -32,7 +32,7 @@ export class AuthService {
   async signIn(email: string, password: string) {
     // Sample only - remove this after real authentication / session
     console.log('sending request');
-    const response = await axios.post('http://localhost:5000/auth/login',{email, password});
+    const response = await axios.post('http://localhost:3000/auth/login',{email, password});
     console.log('request successfull');
     return response.data;
   }

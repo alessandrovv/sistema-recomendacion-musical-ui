@@ -17,16 +17,12 @@ const routes: Routes = [
         pathMatch: 'full'
       },
       {
-        path: 'charts',
-        loadChildren: () => import('../pages/secure/charts/charts.module').then(m => m.ChartsPageModule)
+        path: 'explore',
+        loadChildren: () => import('../pages/secure/explore/explore.module').then(m => m.ExplorePageModule)
       },
       {
-        path: 'payments',
-        loadChildren: () => import('../pages/secure/payments/payments.module').then(m => m.PaymentsPageModule)
-      },
-      {
-        path: 'styleguide',
-        loadChildren: () => import('../pages/secure/styleguide/styleguide.module').then(m => m.StyleguidePageModule)
+        path: 'library',
+        loadChildren: () => import('../pages/secure/library/library.module').then(m => m.LibraryPageModule)
       },
     ]
   }

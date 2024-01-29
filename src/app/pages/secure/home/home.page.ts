@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AlbumService } from 'src/app/services/data/album.service';
 import { DataService } from 'src/app/services/data/data.service';
+import { SongsService } from 'src/app/services/data/songs.service';
 
 @Component({
   selector: 'app-home',
@@ -39,12 +41,14 @@ export class HomePage implements OnInit {
     artist: 'fulano',
   }];
 
-  constructor(private dataService: DataService) { }
+  constructor(private songService: SongsService, private albumService: AlbumService) { }
 
   formatDuration(time: number): string{
-    const minutes:number = Math.ceil(time/60);
-    const seconds:number = (time%60);
-    return `${minutes}:${(seconds<10)?'0':''}${seconds}`;
+    const seconds = Math.ceil(time/1000);
+    const minutes: number = Math.ceil(seconds/60);
+    const displaySeconds = seconds%60;
+    // const seconds: number = (time%60);
+    return `${minutes}:${(displaySeconds<10)?'0':''}${displaySeconds}`;
   }
 
   async ngOnInit() {
@@ -62,14 +66,14 @@ export class HomePage implements OnInit {
   }
 
   async getAlbums(){
-    await this.dataService.getAllAlbums().then((response: any[]) =>{
-      this.recomendations = response;
+    await this.albumService.getAllAlbums().then((response: any[]) =>{
+      this.recomendations = response.splice(0,5);
     }).catch(error=>console.error(error));;
   }
 
   async getSongs(){
-    await this.dataService.getAllSongs().then((response: any[])=>{
-      this.lastSongs = response.splice(0,4);
+    await this.songService.getAllSongs().then((response: any[])=>{
+      this.lastSongs = response.splice(0,5);
       console.log(this.lastSongs);
     }).catch(error=>console.error(error));;
   }

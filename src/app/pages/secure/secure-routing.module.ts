@@ -7,10 +7,6 @@ const routes: Routes = [
     loadChildren: () => import('./../../tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {
-    path: 'styleguide',
-    loadChildren: () => import('./styleguide/styleguide.module').then(m => m.StyleguidePageModule)
-  },
-  {
     path: 'settings',
     loadChildren: () => import('./settings/settings.module').then(m => m.SettingsPageModule)
   },
@@ -19,9 +15,14 @@ const routes: Routes = [
     loadChildren: () => import('./profile/edit/edit.module').then(m => m.EditPageModule)
   },
   {
-    path: 'payments/detail',
-    loadChildren: () => import('./payments/payment-detail/payment-detail.module').then( m => m.PaymentDetailPageModule)
+    path: 'explore',
+    loadChildren: () => import('./explore/explore.module').then( m => m.ExplorePageModule)
+  },
+  {
+    path: 'library',
+    loadChildren: () => import('./library/library.module').then( m => m.LibraryPageModule)
   }
+
 ];
 
 @NgModule({
