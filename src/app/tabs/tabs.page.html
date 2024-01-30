@@ -1,4 +1,117 @@
-<ion-tabs>
+<ion-tabs class="relative">
+  <div class="h-full" *ngIf="playerOpen">
+    <ion-header collapse="fade" [translucent]="true">
+      <ion-toolbar color="dark">
+        <ion-title color="light">
+          Reproductor
+        </ion-title>
+        <ion-buttons slot="primary">
+          <ion-button color="medium" (click)="playerOpen=false">
+            <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content [fullscreen]="true">
+      <div class="w-full py-2 px-8">
+        <div class="aspect-square overflow-hidden p-8">
+          <img class="w-full aspect-square rounded-lg "[src]="currentSong.urlImagen||'assets/placeholders/image-min.jpg'">
+        </div>
+        <div>
+          <h4 class="text-white font-bold text-lg">{{currentSong.titulo}}</h4>
+          <label class="text-gray-500 text-base font-medium">
+            <span *ngFor="let artistaItem of currentSong.ArtistaCancion">{{artistaItem.artista.nombre}}</span>
+          </label>
+        </div>
+      </div>
+      <div class="w-full px-4 mb-4">
+        <div class="relative">
+          <input id="labels-range-input" type="range"
+            class="w-full h-1 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700">
+          <span class="text-sm text-gray-500 dark:text-gray-400 absolute start-0 -bottom-4">1:50</span>
+          <span class="text-sm text-gray-500 dark:text-gray-400 absolute end-0 -bottom-4">3:00</span>
+        </div>
+      </div>
+      <div class="w-full grid place-items-center">
+        <div class="w-full flex justify-around p-2">
+          <button class="focus:outline-none">
+            <ion-icon name="open-outline" color="medium" size="medium" class="text-lg"></ion-icon>
+          </button>
+          <button class="focus:outline-none">
+            <ion-icon name="play-skip-back-outline" color="medium" size="medium" class="text-lg"></ion-icon>
+          </button>
+          <button
+            class="rounded-full w-10 aspect-square flex items-center justify-center bg-gray-100 outline-none">
+            <ion-icon slot="start" name="caret-forward-outline" size="large"></ion-icon>
+          </button>
+          <button class="focus:outline-none">
+            <ion-icon name="play-skip-forward-outline" color="medium" size="medium" class="text-lg"></ion-icon>
+          </button>
+          <button class="focus:outline-none">
+            <ion-icon name="heart-outline" color="medium" size="medium" class="text-lg"></ion-icon>
+          </button>
+        </div>
+      </div>
+      <div class="w-full px-4 overflow-auto">
+        <ul class="text-xs sm:text-base divide-y divide-gray-800 cursor-default roun">
+          <li class="flex items-center space-x-3 hover:bg-slate-800 rounded-md px-2">
+            <button class="p-3 focus:outline-none">
+              <ion-icon slot="start" name="caret-forward-outline" color="medium" size="large"></ion-icon>
+            </button>
+            <div class="flex-1 text-white">
+              <span>Artist</span>
+              <span>-</span>
+              <span>title</span>
+            </div>
+            <div class="text-xs text-gray-400">
+              2:58
+            </div>
+          </li>
+        </ul>
+      </div>
+    </ion-content>
+
+  </div>
+  <div *ngIf="currentSong!==null" class="mb-1 p-1 w-full" (click)="playerOpen=true">
+    <div class="bg-slate-700 rounded-md">
+      <ion-row class="px-2">
+        <ion-col size="auto">
+          <ion-thumbnail>
+            <img [src]="currentSong.urlImagen||'assets/placeholders/image-min.jpg'" alt="logo" />
+          </ion-thumbnail>
+        </ion-col>
+        <ion-col>
+          <div>
+            <div class="flex gap-1">
+              <span>{{currentSong.titulo}}</span>
+              <span>•</span>
+              <span>
+                <ion-text color="medium">
+                  <span *ngFor="let artistaItem of currentSong.ArtistaCancion">{{artistaItem.artista.nombre}}</span>
+                </ion-text>
+              </span>
+            </div>
+            <div>
+              <ion-icon name="desktop-outline"></ion-icon>
+              Devices Available
+            </div>
+          </div>
+        </ion-col>
+        <ion-col size="auto" class="grid place-items-center">
+          <ion-button fill="clear" size="small" color="medium">
+            <ion-icon slot="icon-only" name="play-sharp"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="12">
+          <ion-progress-bar value="0.25" color="medium" class="text-white rounded-xl"></ion-progress-bar>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
 
   <ion-tab-bar color="dark" slot="bottom">
 

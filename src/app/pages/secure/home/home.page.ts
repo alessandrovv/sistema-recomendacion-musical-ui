@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AlbumService } from 'src/app/services/data/album.service';
 import { DataService } from 'src/app/services/data/data.service';
 import { SongsService } from 'src/app/services/data/songs.service';
+import { PlayerService } from 'src/app/services/func/player.service';
 
 @Component({
   selector: 'app-home',
@@ -41,7 +42,7 @@ export class HomePage implements OnInit {
     artist: 'fulano',
   }];
 
-  constructor(private songService: SongsService, private albumService: AlbumService) { }
+  constructor(private songService: SongsService, private albumService: AlbumService, private playerService: PlayerService) { }
 
   formatDuration(time: number): string{
     const seconds = Math.ceil(time/1000);
@@ -76,6 +77,11 @@ export class HomePage implements OnInit {
       this.lastSongs = response.splice(0,5);
       console.log(this.lastSongs);
     }).catch(error=>console.error(error));;
+  }
+
+  selectSong(song){
+    console.log('song: ', song);
+    this.playerService.setCurrentSong(song);
   }
 
 }

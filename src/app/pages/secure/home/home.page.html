@@ -24,43 +24,35 @@
   <div class="ion-padding">
     <div>
       <h4 class="py-2 text-lg">Albumes Recomendados</h4>
-      <div class="rounded-lg divide-zinc-700 divide-y-2 p-2 bg-zinc-800" *ngIf="content_loaded">
-        <div class="w-full flex py-2 h-20 px-3" *ngFor="let recomendation of recomendations">
+      <div class="rounded-lg divide-zinc-700 divide-y-2 pt-1 bg-zinc-800" *ngIf="content_loaded">
+        <div class="w-full flex py-2 h-20 px-3" *ngFor="let recommendation of recomendations">
           <div class="w-1/5">
-
+            <div class="h-full grow-0 aspect-square bg-zinc-950 rounded-md grid place-items-center relative overflow-hidden">
+              <img src="assets/placeholders/image-min.jpg" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
+              <ion-icon color="medium" size="large" name="caret-forward-outline" class="absolute"></ion-icon>
+            </div>
           </div>
           <div class="w-4/5">
-            <h3 class="font-bold">{{recomendation.name}}</h3>
-            <small class="text-sm text-zinc-500">{{recomendation.artist?.nombre||'artist'}}</small>
+            <h3 class="font-bold">{{recommendation.name}}</h3>
+            <small class="text-sm text-zinc-500">{{recommendation.artist?.nombre||'artist'}}</small>
           </div>
         </div>
       </div>
     </div>
 
     <hr>
-
-    <!-- Skeletons -->
-    <ion-list class="list-custom animate__animated animate__fadeIn" lines="full" *ngIf="!content_loaded">
-      <ion-item color="primary" *ngFor="let i of [].constructor(3);">
-        <ion-label color="medium">
-          <h3><ion-skeleton-text animated style="width: 50%"></ion-skeleton-text></h3>
-          <p><ion-skeleton-text animated style="width: 70%"></ion-skeleton-text></p>
-        </ion-label>
-        <ion-skeleton-text slot="end" animated style="width: 10%"></ion-skeleton-text>
-      </ion-item>
-    </ion-list>
-
     <div>
-      <div class="py-2 flex justify-between">
+      <div class="py-2 flex justify-between items-center">
         <h4 class="text-lg">Volver a escuchar</h4>
         <ion-button color="medium" *ngIf="content_loaded">See All <ion-icon slot="end" name="arrow-forward"></ion-icon>
         </ion-button>
       </div>
       <div class="rounded-lg divide-zinc-700 divide-y-2 px-3 bg-zinc-800 mb-3"  *ngIf="content_loaded">
-        <div class="w-full flex py-2 h-20 gap-2" *ngFor="let song of lastSongs">
+        <div (click)="selectSong(song)" class="w-full flex py-2 h-20 gap-2 hover:cursor-pointer" *ngFor="let song of lastSongs">
 
-          <div class="h-full grow-0 aspect-square bg-zinc-950 rounded-md grid place-items-center">
-            <ion-icon color="tertiary" size="large" name="caret-forward-outline"></ion-icon>
+          <div class="h-full grow-0 aspect-square bg-zinc-950 rounded-md grid place-items-center relative overflow-hidden">
+            <img src="assets/placeholders/image-min.jpg" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
+            <ion-icon color="medium" size="large" name="caret-forward-outline" class="absolute"></ion-icon>
           </div>
 
           <label class="flex-grow py-1">

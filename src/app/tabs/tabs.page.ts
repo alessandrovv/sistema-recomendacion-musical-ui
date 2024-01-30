@@ -1,16 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActionSheetController } from '@ionic/angular';
+import { PlayerService } from '../services/func/player.service';
 
 @Component({
   selector: 'app-tabs',
   templateUrl: 'tabs.page.html',
   styleUrls: ['tabs.page.scss']
 })
-export class TabsPage {
+export class TabsPage implements OnInit {
+
+  playerOpen = false;
+  currentSong: any = null;
 
   constructor(
-    private actionSheetController: ActionSheetController
+    private actionSheetController: ActionSheetController,
+    private playerService: PlayerService,
   ) {}
+
+  ngOnInit(){
+    this.playerService.currentSong$.subscribe((song)=>{
+      this.currentSong = song;
+      console.log(song);
+    });
+  }
 
   // Select action
   async selectAction() {

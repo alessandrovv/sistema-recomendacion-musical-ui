@@ -20,7 +20,7 @@
 
   <div class="ion-padding">
     <div class="w-full bg-white text-gray-600 text-xl p-1 rounded-sm flex focus:ring-1 focus:ring-indigo-700">
-      <input class="bg-white py-1 px-2 grow outline-none" type="text" placeholder="Buscar...">
+      <input class="bg-white py-1 px-2 grow outline-none rounded-sm text-slate-800" type="text" placeholder="Buscar...">
     </div>
 
     <!-- <div class="mb-3">
@@ -48,7 +48,7 @@
     </div> -->
 
     <div class="mb-3">
-      <h3 class="font-bold text-lg py-2">Explorar Todo</h3>
+      <h3 class="font-bold text-lg py-2 text-white">Explorar Todo</h3>
       <div class="grid grid-cols-2 gap-2">
         <div class="shrink-0 bg-green-800 h-24 rounded-md grid items-end">
           <h3 class="text-white font-semibold pb-3 pl-2" for="">Listas de reproduccion</h3>
@@ -65,19 +65,22 @@
       </div>
     </div>
     <div class="mb-3">
-      <h3 class="font-bold text-lg pt-2">TOP 5 semanal</h3>
+      <h3 class="font-bold text-lg pt-2 text-white">TOP 5 semanal</h3>
       <div class="flex flex-col gap-2 divide-y divide-gray-600">
-        <div class="w-full flex h-20 gap-2 pt-2" *ngFor="let song of topSongs">
+        <div class="w-full flex h-20 gap-2 pt-3 pb-2 px-4" *ngFor="let song of topSongs">
           <div class="h-full grow-0 aspect-square bg-zinc-950 rounded-md grid place-items-center">
-            <ion-icon color="tertiary" size="large" name="caret-forward-outline"></ion-icon>
+            <div class="h-full grow-0 aspect-square bg-zinc-950 rounded-md grid place-items-center relative overflow-hidden">
+              <img src="assets/placeholders/image-min.jpg" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
+              <ion-icon color="medium" size="large" name="caret-forward-outline" class="absolute"></ion-icon>
+            </div>
           </div>
           <label class="flex-grow py-1">
-            <h3 class="text-md font-bold">{{song.titulo}}</h3>
+            <h3 class="text-md font-bold text-white">{{song.titulo}}</h3>
             <p class="text-sm text-zinc-500">
               <span *ngFor="let artist of song.ArtistaCancion">{{artist.artista.nombre}}</span>
             </p>
           </label>
-          <small class="flex-shrink bg-slate-500 rounded-md py px-1 self-center font-semibold" color="secondary" slot="end">
+          <small class="flex-shrink bg-slate-500 text-gray-300 rounded-md py px-1 self-center font-semibold" color="secondary" slot="end">
             {{formatDuration(song.duration)}}
           </small>
         </div>
