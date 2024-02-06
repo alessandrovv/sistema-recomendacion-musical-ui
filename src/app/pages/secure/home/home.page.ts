@@ -1,4 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Album } from 'src/app/models/album';
+import { Cancion } from 'src/app/models/song';
 import { AlbumService } from 'src/app/services/data/album.service';
 import { DataService } from 'src/app/services/data/data.service';
 import { SongsService } from 'src/app/services/data/songs.service';
@@ -14,33 +16,9 @@ export class HomePage implements OnInit {
   // eslint-disable-next-line @typescript-eslint/naming-convention
   content_loaded = false;
 
-  recomendations: Array<any> = [{
-    id: 1,
-    song: 'Test 1',
-    artist: 'fulano'
-  },{
-    id: 2,
-    song: 'Test 2',
-    artist: 'fulano'
-  },{
-    id: 3,
-    song: 'Test 3',
-    artist: 'fulano'
-  }] ;
+  recomendations: Array<Album> = [] ;
 
-  lastSongs: Array<any> = [{
-    id: 3,
-    song: 'Test 4',
-    artist: 'fulano',
-  },{
-    id: 2,
-    song: 'Test 2',
-    artist: 'fulano',
-  },{
-    id: 5,
-    song: 'Test 5',
-    artist: 'fulano',
-  }];
+  lastSongs: Array<Cancion> = [];
 
   constructor(private songService: SongsService, private albumService: AlbumService, private playerService: PlayerService) { }
 
@@ -82,6 +60,10 @@ export class HomePage implements OnInit {
   selectSong(song){
     console.log('song: ', song);
     this.playerService.setCurrentSong(song);
+  }
+
+  selectAlbum(album){
+    this.playerService.setCurrentAlbum(album);
   }
 
 }

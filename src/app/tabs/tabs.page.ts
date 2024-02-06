@@ -10,7 +10,12 @@ import { PlayerService } from '../services/func/player.service';
 export class TabsPage implements OnInit {
 
   playerOpen = false;
+  // songDisplay = false;
+
   currentSong: any = null;
+
+  currentQueue: any[] = [];
+
 
   constructor(
     private actionSheetController: ActionSheetController,
@@ -19,44 +24,25 @@ export class TabsPage implements OnInit {
 
   ngOnInit(){
     this.playerService.currentSong$.subscribe((song)=>{
-      this.currentSong = song;
-      console.log(song);
+      if(song?.code !== this.currentSong?.code){
+        this.currentSong = song;
+      }
+      // this.songDisplay=true;
+      console.log('setting: ',song);
+    });
+
+    this.playerService.playQueue$.subscribe((queue)=>{
+      console.log('sub: ', queue);
+      this.currentQueue = queue;
+      // this.songDisplay = true;
+      // this.currentSong = this.currentQueue[0];
     });
   }
 
-  // Select action
-  async selectAction() {
-
-    const actionSheet = await this.actionSheetController.create({
-      header: 'Choose an action',
-      cssClass: 'custom-action-sheet',
-      buttons: [
-        {
-          text: 'Add something',
-          icon: 'wallet',
-          handler: () => {
-            // Put in logic ...
-          }
-        },
-        {
-          text: 'Change something',
-          icon: 'swap-horizontal-outline',
-          handler: () => {
-            // Put in logic ...
-          }
-        },
-        {
-          text: 'Set something',
-          icon: 'calculator',
-          handler: () => {
-            // Put in logic ...
-          }
-        }, {
-          text: 'Cancel',
-          icon: 'close',
-          role: 'cancel'
-        }]
-    });
-    await actionSheet.present();
+  handleSongSelection(song){
+    if(song.code !== this.currentSong.code){
+      this.playerService.setCurrentSong(song);
+    }
   }
+
 }

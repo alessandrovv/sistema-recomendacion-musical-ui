@@ -1,31 +1,35 @@
 <ion-header collapse="fade" [translucent]="true">
   <ion-toolbar color="dark">
     <ion-buttons slot="start">
-      <ion-back-button color="secondary" text="Back" defaultHref="/home">
+      <ion-back-button color="medium" defaultHref="/home">
       </ion-back-button>
     </ion-buttons>
 
     <ion-title color="light">
-      Settings
+      Ajustes
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
 
-  <ion-card class="ion-no-margin profile-card">
+  <ion-card class="ion-no-margin profile-card"  class="m-3 p-2 bg-gray-800">
     <ion-card-content>
-      <ion-avatar>
-        <img src="../../../../assets/card-media.png">
-      </ion-avatar>
+      <div class="flex h-20 items-center gap-3">
+        <div class="h-20 aspect-square shrink object-fill grid place-items-center rounded-full border border-spacing-1 border-gray-600 overflow-hidden">
+          <img class="h-full w-auto ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" src="../../../../assets/card-media.png">
+        </div>
+        <div class="grow">
+          <h1>
+            <ion-text color="light"><strong>Ayrton Soto</strong></ion-text>
+          </h1>
 
-      <h1>
-        <ion-text color="tertiary"><strong>John Doe</strong></ion-text>
-      </h1>
+          <p>
+            <ion-text color="medium">user@example.com</ion-text>
+          </p>
+        </div>
+      </div>
 
-      <p>
-        <ion-text color="medium">john.doe@mail.com</ion-text>
-      </p>
     </ion-card-content>
   </ion-card>
 
@@ -33,21 +37,15 @@
 
     <ion-list-header class="ion-list-header-small">
       <ion-label>
-        <ion-text color="tertiary">Personal</ion-text>
+        <ion-text color="medium">Personal</ion-text>
       </ion-label>
     </ion-list-header>
 
-    <ion-list lines="full">
-      <ion-item color="primary" button routerLink="profile/edit">
+    <ion-list  lines="none">
+      <ion-item color="none" button routerLink="profile/edit" class="rounded-sm bg-gray-700 hover:bg-gray-600 group">
         <ion-icon slot="start" color="medium" name="person"></ion-icon>
-        <ion-label>
-          <h3>Profile</h3>
-        </ion-label>
-      </ion-item>
-      <ion-item color="primary" button routerLink="account">
-        <ion-icon slot="start" color="medium" name="person-circle"></ion-icon>
-        <ion-label>
-          <h3>Account settings</h3>
+        <ion-label class="border-0">
+          <h3 class="text-white  group-hover:font-semibold">Actualizar Perfil</h3>
         </ion-label>
       </ion-item>
     </ion-list>
@@ -56,57 +54,15 @@
 
     <ion-list-header class="ion-list-header-small">
       <ion-label>
-        <ion-text color="tertiary">Synchronisation</ion-text>
+        <ion-text color="medium">General</ion-text>
       </ion-label>
     </ion-list-header>
 
-    <ion-list class="list-custom" lines="full">
-      <ion-item color="primary" detail="false">
-        <ion-icon slot="start" color="medium" name="scan"></ion-icon>
+    <ion-list lines="none">
+      <ion-item color="none" button class="rounded-sm bg-gray-700 hover:bg-gray-600 group">
+        <ion-icon slot="start" color="medium" name="time-outline"></ion-icon>
         <ion-label>
-          <h3>Smart sync</h3>
-        </ion-label>
-        <ion-toggle color="tertiary" checked slot="end"></ion-toggle>
-      </ion-item>
-      <ion-item color="primary" button routerLink="devices">
-        <ion-icon slot="start" color="medium" name="phone-portrait"></ion-icon>
-        <ion-label>
-          <h3>Registered devices</h3>
-        </ion-label>
-        <ion-note slot="end" color="tertiary">3</ion-note>
-      </ion-item>
-    </ion-list>
-
-    <p>
-      <ion-text color="medium">Smart Sync synchronises banking data safely between all your registered devices.</ion-text>
-    </p>
-
-    <hr class="hr-medium">
-
-    <ion-list-header class="ion-list-header-small">
-      <ion-label>
-        <ion-text color="tertiary">Security</ion-text>
-      </ion-label>
-    </ion-list-header>
-
-    <ion-list lines="full">
-      <ion-item color="primary" button>
-        <ion-icon slot="start" color="medium" name="lock-closed"></ion-icon>
-        <ion-label>
-          <h3>Master password</h3>
-        </ion-label>
-      </ion-item>
-      <ion-item color="primary" detail="false">
-        <ion-icon slot="start" color="medium" name="scan"></ion-icon>
-        <ion-label>
-          <h3>Face ID</h3>
-        </ion-label>
-        <ion-toggle color="tertiary" slot="end"></ion-toggle>
-      </ion-item>
-      <ion-item color="primary" button routerLink="backups">
-        <ion-icon slot="start" color="medium" name="cloud-circle"></ion-icon>
-        <ion-label>
-          <h3>Backups</h3>
+          <h3 class="text-white group-hover:font-bold">Historial</h3>
         </ion-label>
       </ion-item>
     </ion-list>
@@ -114,10 +70,10 @@
     <hr class="hr-medium">
 
     <ion-list class="list-custom" lines="full" (click)="signOut()">
-      <ion-item color="primary" button detail=false>
+      <ion-item button detail=false  color="none" button class="rounded-sm bg-gray-700 group hover:bg-red-600 active:bg-red-800">
         <ion-icon slot="start" color="light" name="log-out"></ion-icon>
-        <ion-label color="light">
-          <h3>Sign out</h3>
+        <ion-label color="medium" class="group-hover:font-semibold">
+          <h3>Cerrar sesion</h3>
         </ion-label>
       </ion-item>
     </ion-list>

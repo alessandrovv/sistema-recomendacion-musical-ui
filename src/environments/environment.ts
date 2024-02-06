@@ -3,8 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  spotifyClientId: '1dde4504bfe1471ca92faa4518b54075',
+  spotifyClientSecret: 'ee30fbc27ee14f6b99706f3e4bb67bf7',
 };
+// SPOTIFY-CLIENT-ID=1dde4504bfe1471ca92faa4518b54075
+// SPOTIFY-CLIENT-SECRET=ee30fbc27ee14f6b99706f3e4bb67bf7
 
 /*
  * For easier debugging in development mode, you can import the following file

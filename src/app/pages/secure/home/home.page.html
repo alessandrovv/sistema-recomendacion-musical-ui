@@ -25,7 +25,7 @@
     <div>
       <h4 class="py-2 text-lg">Albumes Recomendados</h4>
       <div class="rounded-lg divide-zinc-700 divide-y-2 pt-1 bg-zinc-800" *ngIf="content_loaded">
-        <div class="w-full flex py-2 h-20 px-3" *ngFor="let recommendation of recomendations">
+        <div (click)="selectAlbum(recommendation)" class="w-full flex py-2 h-20 px-3" *ngFor="let recommendation of recomendations">
           <div class="w-1/5">
             <div class="h-full grow-0 aspect-square bg-zinc-950 rounded-md grid place-items-center relative overflow-hidden">
               <img src="assets/placeholders/image-min.jpg" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
@@ -33,8 +33,8 @@
             </div>
           </div>
           <div class="w-4/5">
-            <h3 class="font-bold">{{recommendation.name}}</h3>
-            <small class="text-sm text-zinc-500">{{recommendation.artist?.nombre||'artist'}}</small>
+            <h3 class="font-bold">{{recommendation.nombre}}</h3>
+            <small class="text-sm text-zinc-500">{{recommendation.artista.nombre}}</small>
           </div>
         </div>
       </div>
@@ -56,13 +56,13 @@
           </div>
 
           <label class="flex-grow py-1">
-            <h3 class="text-md font-bold">{{song.titulo}}</h3>
+            <h3 class="text-md font-bold">{{song.nombre}}</h3>
             <p class="text-sm text-zinc-500">
-              <span *ngFor="let artista of song.ArtistaCancion">{{artista.artista.nombre}}</span>
+              <span *ngFor="let artista of song.artistas">{{artista.nombre}}</span>
             </p>
           </label>
           <small class="flex-shrink bg-slate-500 rounded-md py px-1 self-center font-semibold" color="secondary" slot="end">{{
-            formatDuration(song.duration)
+            formatDuration(song.duracion)
           }}</small>
         </div>
       </div>

@@ -53,16 +53,16 @@
           </button>
         </div>
       </div>
-      <div class="w-full px-4 overflow-auto">
-        <ul class="text-xs sm:text-base divide-y divide-gray-800 cursor-default roun">
-          <li class="flex items-center space-x-3 hover:bg-slate-800 rounded-md px-2">
+      <div class="w-full px-4 overflow-auto mb-16">
+        <ul class="text-xs sm:text-base divide-y divide-gray-800 cursor-default h-full  overflow-auto">
+          <li (click)="handleSongSelection(item)" *ngFor="let item of currentQueue" [ngClass]="{'bg-gray-600':item.code===currentSong.code}" class="flex items-center space-x-3 hover:bg-slate-800 rounded-md px-2">
             <button class="p-3 focus:outline-none">
               <ion-icon slot="start" name="caret-forward-outline" color="medium" size="large"></ion-icon>
             </button>
             <div class="flex-1 text-white">
-              <span>Artist</span>
+              <span>{{item.titulo}}</span>
               <span>-</span>
-              <span>title</span>
+              <span *ngFor="let artistaItem of currentSong.ArtistaCancion">{{artistaItem.artista.nombre}}</span>
             </div>
             <div class="text-xs text-gray-400">
               2:58
@@ -73,7 +73,7 @@
     </ion-content>
 
   </div>
-  <div *ngIf="currentSong!==null" class="mb-1 p-1 w-full" (click)="playerOpen=true">
+  <div *ngIf="currentSong!==null && !playerOpen" class="mb-1 p-1 w-full" (click)="playerOpen=true">
     <div class="bg-slate-700 rounded-md">
       <ion-row class="px-2">
         <ion-col size="auto">
@@ -115,17 +115,17 @@
 
   <ion-tab-bar color="dark" slot="bottom">
 
-    <ion-tab-button tab="home">
+    <ion-tab-button tab="home" (click)="playerOpen=false">
       <ion-icon name="home"></ion-icon>
       <ion-label>Inicio</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="explore">
+    <ion-tab-button tab="explore" (click)="playerOpen=false">
       <ion-icon name="compass"></ion-icon>
       <ion-label>Descubrir</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="library">
+    <ion-tab-button tab="library" (click)="playerOpen=false">
       <ion-icon name="albums"></ion-icon>
       <ion-label>Biblioteca</ion-label>
     </ion-tab-button>

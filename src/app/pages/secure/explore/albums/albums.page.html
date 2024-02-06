@@ -1,0 +1,34 @@
+<ion-header collapse="fade" [translucent]="true">
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-back-button color="medium" defaultHref="/explore">
+      </ion-back-button>
+    </ion-buttons>
+
+    <ion-title color="light">
+      Albums
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="flex flex-col gap-2 divide-y divide-gray-600">
+    <div (click)="selectAlbum(album)" class="w-full flex h-20 gap-2 pt-3 pb-2 px-4" *ngFor="let album of list">
+      <div class="h-full grow-0 aspect-square bg-zinc-950 rounded-md grid place-items-center">
+        <div class="h-full grow-0 aspect-square bg-zinc-950 rounded-md grid place-items-center relative overflow-hidden">
+          <img src="assets/placeholders/image-min.jpg" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
+          <ion-icon color="medium" size="large" name="caret-forward-outline" class="absolute"></ion-icon>
+        </div>
+      </div>
+      <label class="flex-grow py-1">
+        <h3 class="text-md font-bold text-white">{{album.nombre}}</h3>
+        <p class="text-sm text-zinc-500">
+          <span >{{album.artista.nombre}}</span>
+        </p>
+      </label>
+      <small class="flex-shrink bg-slate-500 text-gray-300 rounded-md py px-1 self-center font-semibold" color="secondary" slot="end">
+        -
+      </small>
+    </div>
+  </div>
+</ion-content>

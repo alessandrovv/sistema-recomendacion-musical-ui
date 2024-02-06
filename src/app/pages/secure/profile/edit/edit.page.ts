@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -12,7 +13,7 @@ import { ToastService } from 'src/app/services/toast/toast.service';
 export class EditPage implements OnInit {
 
   edit_profile_form: FormGroup;
-  submit_attempt: boolean = false;
+  submit_attempt = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -21,8 +22,11 @@ export class EditPage implements OnInit {
     private actionSheetController: ActionSheetController
   ) { }
 
-  ngOnInit() {
+  fetchUserInfo(){
+    return 0;
+  }
 
+  ngOnInit() {
     // Setup form
     this.edit_profile_form = this.formBuilder.group({
       name_first: ['', Validators.required],

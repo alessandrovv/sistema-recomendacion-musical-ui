@@ -18,4 +18,11 @@ export class PlayerService {
   setCurrentSong(song: any){
     this.currentSongSubject.next(song);
   }
+
+  setCurrentAlbum(album){
+    console.log('servicios: ', album, album.canciones[0]);
+    console.log('primera: ', album.canciones[0]);
+    this.playQueueSubject.next(album.canciones);
+    this.currentSongSubject.next(album.canciones[0]);
+  }
 }
