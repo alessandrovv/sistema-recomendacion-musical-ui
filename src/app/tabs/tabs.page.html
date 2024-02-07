@@ -19,9 +19,9 @@
           <img class="w-full aspect-square rounded-lg "[src]="currentSong.urlImagen||'assets/placeholders/image-min.jpg'">
         </div>
         <div>
-          <h4 class="text-white font-bold text-lg">{{currentSong.titulo}}</h4>
+          <h4 class="text-white font-bold text-lg">{{currentSong.nombre}}</h4>
           <label class="text-gray-500 text-base font-medium">
-            <span *ngFor="let artistaItem of currentSong.ArtistaCancion">{{artistaItem.artista.nombre}}</span>
+            <span *ngFor="let artistaItem of currentSong.artistas">{{artistaItem.nombre}}</span>
           </label>
         </div>
       </div>
@@ -55,14 +55,14 @@
       </div>
       <div class="w-full px-4 overflow-auto mb-16">
         <ul class="text-xs sm:text-base divide-y divide-gray-800 cursor-default h-full  overflow-auto">
-          <li (click)="handleSongSelection(item)" *ngFor="let item of currentQueue" [ngClass]="{'bg-gray-600':item.code===currentSong.code}" class="flex items-center space-x-3 hover:bg-slate-800 rounded-md px-2">
+          <li (click)="handleSongSelection(item)" *ngFor="let item of currentQueue" [ngClass]="{'bg-gray-600':item.codigo===currentSong.codigo}" class="flex items-center space-x-3 hover:bg-slate-800 rounded-md px-2">
             <button class="p-3 focus:outline-none">
               <ion-icon slot="start" name="caret-forward-outline" color="medium" size="large"></ion-icon>
             </button>
             <div class="flex-1 text-white">
-              <span>{{item.titulo}}</span>
+              <span>{{item.nombre}}</span>
               <span>-</span>
-              <span *ngFor="let artistaItem of currentSong.ArtistaCancion">{{artistaItem.artista.nombre}}</span>
+              <span *ngFor="let artistaItem of currentSong.artistas">{{artistaItem.nombre}}</span>
             </div>
             <div class="text-xs text-gray-400">
               2:58
@@ -84,11 +84,11 @@
         <ion-col>
           <div>
             <div class="flex gap-1">
-              <span>{{currentSong.titulo}}</span>
+              <span>{{currentSong.nombre}}</span>
               <span>•</span>
               <span>
                 <ion-text color="medium">
-                  <span *ngFor="let artistaItem of currentSong.ArtistaCancion">{{artistaItem.artista.nombre}}</span>
+                  <span *ngFor="let artistaItem of currentSong.artistas">{{artistaItem.nombre}}</span>
                 </ion-text>
               </span>
             </div>

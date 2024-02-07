@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit } from '@angular/core';
 import { ActionSheetController } from '@ionic/angular';
 import { PlayerService } from '../services/func/player.service';
+import { Cancion } from '../models/song';
 
 @Component({
   selector: 'app-tabs',
@@ -9,29 +11,28 @@ import { PlayerService } from '../services/func/player.service';
 })
 export class TabsPage implements OnInit {
 
+  currentSong: Cancion = null;
+
+  currentQueue: Cancion[] = [];
+
   playerOpen = false;
-  // songDisplay = false;
-
-  currentSong: any = null;
-
-  currentQueue: any[] = [];
-
 
   constructor(
     private actionSheetController: ActionSheetController,
     private playerService: PlayerService,
   ) {}
 
+
   ngOnInit(){
-    this.playerService.currentSong$.subscribe((song)=>{
-      if(song?.code !== this.currentSong?.code){
+    this.playerService.currentSong$.subscribe((song: Cancion)=>{
+      if(song?.codigo !== this.currentSong?.codigo){
         this.currentSong = song;
       }
       // this.songDisplay=true;
       console.log('setting: ',song);
     });
 
-    this.playerService.playQueue$.subscribe((queue)=>{
+    this.playerService.playQueue$.subscribe((queue: Cancion[])=>{
       console.log('sub: ', queue);
       this.currentQueue = queue;
       // this.songDisplay = true;
@@ -39,8 +40,8 @@ export class TabsPage implements OnInit {
     });
   }
 
-  handleSongSelection(song){
-    if(song.code !== this.currentSong.code){
+  handleSongSelection(song: Cancion){
+    if(song.codigo !== this.currentSong.codigo){
       this.playerService.setCurrentSong(song);
     }
   }

@@ -57,6 +57,7 @@
     "@types/jasminewd2": "~2.0.10",
     "@types/lodash": "^4.14.202",
     "@types/node": "^18.13.0",
+    "@types/spotify-web-playback-sdk": "^0.1.19",
     "@typescript-eslint/eslint-plugin": "5.51.0",
     "@typescript-eslint/parser": "5.51.0",
     "autoprefixer": "^10.4.7",

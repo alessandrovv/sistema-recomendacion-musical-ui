@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+import { Cancion } from './../../models/song';
 /* eslint-disable @typescript-eslint/member-ordering */
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -6,22 +8,22 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PlayerService {
+  private currentSongSubject: BehaviorSubject<Cancion> = new BehaviorSubject<Cancion>(null);
+  public currentSong$: Observable<Cancion> = this.currentSongSubject.asObservable();
 
-  private currentSongSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
-  public currentSong$: Observable<any> = this.currentSongSubject.asObservable();
-
-  private playQueueSubject: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
-  public playQueue$: Observable<any[]> = this.playQueueSubject.asObservable();
+  private playQueueSubject: BehaviorSubject<Cancion[]> = new BehaviorSubject<Cancion[]>([]);
+  public playQueue$: Observable<Cancion[]> = this.playQueueSubject.asObservable();
 
   constructor() { }
 
-  setCurrentSong(song: any){
+  setCurrentSong(song: Cancion){
     this.currentSongSubject.next(song);
   }
 
-  setCurrentAlbum(album){
+  setCurrentAlbum(album: Album){
     console.log('servicios: ', album, album.canciones[0]);
     console.log('primera: ', album.canciones[0]);
+    album.canciones.forEach(c=>c.album = album);
     this.playQueueSubject.next(album.canciones);
     this.currentSongSubject.next(album.canciones[0]);
   }

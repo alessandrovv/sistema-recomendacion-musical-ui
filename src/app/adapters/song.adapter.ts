@@ -21,6 +21,7 @@ export const mapSongSpotify = (apiSongResponse: any): Cancion => ({
     codigo: apiSongResponse.id,
     nombre: apiSongResponse.name,
     duracion: apiSongResponse.duration_ms,
+    url: apiSongResponse.external_urls.spotify,
     album: {
       id: 0,
       codigo: apiSongResponse.album.id,
